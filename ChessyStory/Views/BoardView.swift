@@ -47,12 +47,12 @@ class BoardView: UIView {
         myInit()
     }
     
-    //TODO
-    func changeBoardSize(){
+    //TODO Λογω UIView δεν δουλεύει σωστά
+   // func changeBoardSize(){
         
         
         
-    }
+   //}
     
     //Ζωγραφίζει τα τετράγωνα
     override func draw(_ rect: CGRect) {
@@ -85,7 +85,7 @@ class BoardView: UIView {
         addEnd(enduserX: toCol, enduserY: toRow)
     }
     
-    
+    //Εκχωρεί το userX και userY στο location
     func addStart(startuserX: Int, startuserY: Int){
         startingPosition = Position(x: startuserX , y: startuserY )
     }
@@ -95,7 +95,7 @@ class BoardView: UIView {
     }
     
     
-    //Ζωγραφίζει ενα knight piece στο πρώτο τετράγωνο
+    //Ζωγραφίζει ενα knight piece στο πρώτο τετράγωνο (Δεν συμβαίνει γιατί δεν αλλάζει η θέση) TODO bugfix
     func drawPiece(){
         let knightPiece = UIImage(named: "Knight")
         knightPiece?.draw(in: CGRect(x: originX, y: originY, width: cellSide, height: cellSide))
@@ -154,8 +154,9 @@ class BoardView: UIView {
         
     }
     
+    //Κατασκευάζει τα nodes
     func generateMoveGraphs(){
-        //BFS
+        //BFS - Συνδεει τα nodes
         func connectMovesGraph(nodes: [Position: Node] ){
             var leveledQueues = [Queue<Node>()]
             leveledQueues[0].enqueue(nodes[startingPosition!]!)
@@ -187,7 +188,7 @@ class BoardView: UIView {
             if depth > cutoff{
                return nil
             }
-//fix isequal μεσα στο Node === bugfix
+            
            if (depth == cutoff && v === dest){
                return [v]
            }
