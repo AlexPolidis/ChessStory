@@ -10,5 +10,8 @@ calculate. Then the application will show below the chessboard the results as a 
 chess notation. If there no paths that the knight can take the application will show an
 appropriate message and the user can try again after he resets the board.
 
+The application uses a mixture of DFS and BFS algorithms to calculate the path. Creates nodes
+and then traverses them.
+
 The Algebraic chess notation will look like this (1,1) -> (2,2) -> (3,3) -> (4,4) and it
 starts with the starting position and ends with the ending position.
