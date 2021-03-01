@@ -31,10 +31,6 @@ class ViewController: UIViewController {
       if (boardView.startingPosition == nil && boardView.endingPosition == nil){
           self.present(alert, animated: true, completion: nil)
       }
-        //TODO Show alert for nopath
-         /*if (boardView.startingPosition == nil && boardView.endingPosition == nil){
-             self.present(alert, animated: true, completion: nil)
-         }*/
     }
 
 
