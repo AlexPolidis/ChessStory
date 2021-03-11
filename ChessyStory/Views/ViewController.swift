@@ -44,7 +44,6 @@ class ViewController: UIViewController {
         
         let alert = UIAlertController(title: "Alert", message: "Board has been reset.", preferredStyle: UIAlertController.Style.alert)
 
-      // add an action (button)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
 
         self.present(alert, animated: true, completion: nil)
@@ -58,7 +57,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func testResult(_ sender: Any) {
-        
         resultLabel.text = "\(boardView.resultString)"
     }
     

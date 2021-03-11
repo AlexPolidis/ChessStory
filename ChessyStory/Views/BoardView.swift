@@ -9,7 +9,7 @@ import UIKit
 
 class BoardView: UIView {
     
-    var availableMoves: [Position] = []
+    //var availableMoves: [Position] = []
     var nodes: [Position: Node] = [:]
     
     var resultString = ""
@@ -59,8 +59,8 @@ class BoardView: UIView {
         cellSide = bounds.width * ratio / 8
         originX = bounds.width * (1 - ratio) / 2
         originY = bounds.height * (1 - ratio) / 2
-        
         drawBoard()
+        drawPiece()
     }
     
     //Παίρνει το startingLocation
@@ -72,6 +72,7 @@ class BoardView: UIView {
         let fromRow: Int = Int((fingerLocation.y - originY) / cellSide)
         print("\(fromCol+1),\(fromRow+1)")
         addStart(startuserX: fromCol, startuserY: fromRow)
+        self.setNeedsDisplay()
     }
         
     //Παίρνει το endingLocation
@@ -81,8 +82,9 @@ class BoardView: UIView {
         
         let toCol: Int = Int((fingerLocation.x - originX) / cellSide)
         let toRow: Int = Int((fingerLocation.y - originY) / cellSide)
-        print("to \(toCol),\(toRow)")
+        print("to \(toCol+1),\(toRow+1)")
         addEnd(enduserX: toCol, enduserY: toRow)
+        self.setNeedsDisplay()
     }
     
     //Εκχωρεί το userX και userY στο location
@@ -98,7 +100,14 @@ class BoardView: UIView {
     //Ζωγραφίζει ενα knight piece στο πρώτο τετράγωνο (Δεν συμβαίνει γιατί δεν αλλάζει η θέση) TODO bugfix
     func drawPiece(){
         let knightPiece = UIImage(named: "Knight")
-        knightPiece?.draw(in: CGRect(x: originX, y: originY, width: cellSide, height: cellSide))
+        let ending = UIImage(named: "End")
+        if startingPosition != nil{
+            knightPiece?.draw(in: CGRect(x: CGFloat(startingPosition!.x)*cellSide, y: CGFloat(startingPosition!.y)*cellSide, width: cellSide, height: cellSide))
+        }
+        if endingPosition != nil{
+            ending?.draw(in: CGRect(x: CGFloat(endingPosition!.x)*cellSide, y: CGFloat(endingPosition!.y)*cellSide, width: cellSide, height: cellSide))
+        }
+
     }
     
     func drawBoard() {
@@ -152,6 +161,11 @@ class BoardView: UIView {
             generateMoveGraphs()
         }
         
+    }
+    
+    @IBAction func resetUI(_ sender: Any) {
+        self.setNeedsDisplay()
+
     }
     
     //Κατασκευάζει τα nodes

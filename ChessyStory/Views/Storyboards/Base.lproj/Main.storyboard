@@ -40,6 +40,8 @@
                                 <connections>
                                     <action selector="clearResults" destination="BYZ-38-t0r" eventType="touchUpInside" id="969-pn-XIA"/>
                                     <action selector="resetBox:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vz1-h5-F0f"/>
+                                    <action selector="resetUI:" destination="K7G-Kp-qPD" eventType="touchUpInside" id="94i-GK-ckV"/>
+                                    <action selector="resetUI:" destination="hcV-fE-1wg" eventType="touchUpInside" id="wPX-h8-pNh"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UeW-Mp-HrZ" customClass="ResultView" customModule="ChessyStory" customModuleProvider="target">
@@ -97,6 +99,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="K7G-Kp-qPD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="18.22429906542056" y="79.049676025917933"/>
         </scene>
