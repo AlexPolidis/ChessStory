@@ -12,57 +12,46 @@ class ViewController: UIViewController {
     var knightMoves: [Position] = []
         
     @IBOutlet weak var boardView: BoardView!
-    
-    @IBOutlet weak var results: BoardView!
-    
+        
     @IBOutlet weak var resultLabel: UILabel!
     
-    
-    
-    @IBAction func showAlertButtonTapped(_ sender: UIButton) {
-
-    // create the alert
-      let alert = UIAlertController(title: "Alert", message: "First choose a starting and an ending position.", preferredStyle: UIAlertController.Style.alert)
-
-    // add an action (button)
-      alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-
-    // show the alert
-      if (boardView.startingPosition == nil && boardView.endingPosition == nil){
-          self.present(alert, animated: true, completion: nil)
-      }
-    }
-
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    }
-    
-    @IBAction func resetBox(_ sender: UIButton) {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(reset))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Calculate", style: .plain, target: self, action: #selector(calculate))
+        resultLabel.text = "Here it will show your results!"
+        resultLabel.font = .systemFont(ofSize: 20)
         
-        let alert = UIAlertController(title: "Alert", message: "Board has been reset.", preferredStyle: UIAlertController.Style.alert)
-
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-
-        self.present(alert, animated: true, completion: nil)
-        reset()
     }
     
-    func reset() {
-        boardView.startingPosition = nil
-        boardView.endingPosition = nil
-        boardView.resultString = ""
+    @objc func calculate() {
+        if boardView.startingPosition != nil && boardView.endingPosition != nil {
+            boardView.generateMoveGraphs()
+            resultLabel.text = "\(boardView.resultString)"
+        } else {
+            let ac = UIAlertController(title: "Alert", message: "First choose a starting and an ending position.", preferredStyle: UIAlertController.Style.alert)
+            ac.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default))
+            present(ac, animated: true)
+        }
     }
     
-    @IBAction func testResult(_ sender: Any) {
-        resultLabel.text = "\(boardView.resultString)"
+    @objc func reset() {
+        if boardView.startingPosition == nil && boardView.endingPosition == nil {
+            let ac = UIAlertController(title: "Alert", message: "There's nothing to reset.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            boardView.startingPosition = nil
+            boardView.endingPosition = nil
+            boardView.resultString = ""
+            resultLabel.text = "Board cleared!"
+            boardView.setNeedsDisplay()
+            let ac = UIAlertController(title: "Alert", message: "Board has been reset.", preferredStyle: UIAlertController.Style.alert)
+            ac.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default))
+            self.present(ac, animated: true)
+        }
     }
-    
-    @IBAction func clearResults(){
-        self.resultLabel.text = "Board cleared!"
-    }
-
 }
 
