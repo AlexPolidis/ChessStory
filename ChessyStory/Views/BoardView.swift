@@ -59,12 +59,11 @@ class BoardView: UIView {
         myInit()
     }
     
-    //TODO UIView doesn't work right
-   // func changeBoardSize(){
+    func changeBoardSize(){
         
         
         
-   //}
+    }
     
     //draw squares
     override func draw(_ rect: CGRect) {
@@ -121,17 +120,6 @@ class BoardView: UIView {
 
     }
     
-  /*  func drawBoard() {
-        for row in 0..<(boardSize/2){
-          for col in 0..<(boardSize/2) {
-              drawSquare(col: col * 2, row: row * 2, color: UIColor.white)
-              drawSquare(col: 1 + col * 2, row: row * 2, color: UIColor.black)
-              drawSquare(col: col * 2, row: 1 + row * 2, color: UIColor.black)
-              drawSquare(col: 1 + col * 2, row: 1 + row * 2, color: UIColor.white)
-
-            }
-        }
-    }*/
     func drawSquare(at coordinate: Coordinate){
         let xToDraw = CGFloat(coordinate.x) * cellSide
         let yToDraw = CGFloat(coordinate.y) * cellSide
@@ -142,16 +130,10 @@ class BoardView: UIView {
         squareColor.setFill()
         box.fill()
     }
+    
     func getSquareColor(col: Int, row: Int) -> UIColor{
         return (col + row) % 2 == 0 ? UIColor.white : UIColor.black
     }
-
-//    func drawSquare(col: Int, row: Int, color: UIColor){
-//        let path = UIBezierPath(rect: CGRect(x: originX + CGFloat(col) * cellSide, y: originY + CGFloat(row) * cellSide, width: cellSide, height: cellSide ))
-//        color.setFill()
-//        path.fill()
-//
-//    }
     
     //Knight's allowed moves
     func getMoves(startingPosition: Position) -> Array<Position> {
@@ -184,12 +166,7 @@ class BoardView: UIView {
         }
         
     }
-    
-    @IBAction func resetUI(_ sender: Any) {
-        self.setNeedsDisplay()
-
-    }
-    
+        
     //create nodes
     func generateMoveGraphs(){
         //BFS - connect nodes
@@ -252,7 +229,7 @@ class BoardView: UIView {
         }
         
         let g = nodes
-        for (pos, node) in g{
+        for (_, node) in g{
             node.resetNeighbors()
         }
         

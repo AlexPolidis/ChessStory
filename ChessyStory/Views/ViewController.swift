@@ -15,10 +15,17 @@ class ViewController: UIViewController {
         
     @IBOutlet weak var resultLabel: UILabel!
     
+    @IBOutlet weak var sizeSlider: UISlider!
+    @IBOutlet weak var sizeButton: UIButton!
+    @IBOutlet weak var chessSize: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        chessSize.text = "N:\(boardView.boardSize)"
+        boardView.layer.borderWidth = 0.8
+        boardView.layer.borderColor = UIColor.black.cgColor
+        navigationController?.navigationBar.barTintColor = UIColor.white
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(reset))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Calculate", style: .plain, target: self, action: #selector(calculate))
         resultLabel.text = "Here it will show your results!"
@@ -53,5 +60,13 @@ class ViewController: UIViewController {
             self.present(ac, animated: true)
         }
     }
+    
+    @IBAction func sliderValueChanged(_ sender: Any) {
+        boardView.boardSize = Int(sizeSlider.value)
+        boardView.changeBoardSize()
+        chessSize.text = ("N:\(boardView.boardSize)")
+    }
+    
+    
 }
 
