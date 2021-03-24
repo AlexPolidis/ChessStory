@@ -8,8 +8,6 @@
 import UIKit
 
 class BoardView: UIView {
-    
-    //var availableMoves: [Position] = []
     var nodes: [Position: Node] = [:]
     
     var resultString = ""
@@ -23,7 +21,7 @@ class BoardView: UIView {
     var N: Int = 8
 
         
-    //Initializer για τα nodes
+    //Initializer for nodes
     func myInit(){
         for i: Int in 0...(N-1){
             
@@ -35,7 +33,6 @@ class BoardView: UIView {
         }
     }
     
-    //Constructor
     init() {
         
         super.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
@@ -47,14 +44,14 @@ class BoardView: UIView {
         myInit()
     }
     
-    //TODO Λογω UIView δεν δουλεύει σωστά
+    //TODO UIView doesn't work right
    // func changeBoardSize(){
         
         
         
    //}
     
-    //Ζωγραφίζει τα τετράγωνα
+    //draw squares
     override func draw(_ rect: CGRect) {
         cellSide = bounds.width * ratio / 8
         originX = bounds.width * (1 - ratio) / 2
@@ -63,7 +60,6 @@ class BoardView: UIView {
         drawPiece()
     }
     
-    //Παίρνει το startingLocation
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let start = touches.first!
         let fingerLocation = start.location(in: self)
@@ -75,7 +71,6 @@ class BoardView: UIView {
         self.setNeedsDisplay()
     }
         
-    //Παίρνει το endingLocation
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let start = touches.first!
         let fingerLocation = start.location(in: self)
@@ -87,7 +82,7 @@ class BoardView: UIView {
         self.setNeedsDisplay()
     }
     
-    //Εκχωρεί το userX και userY στο location
+    //add userX and userY to location
     func addStart(startuserX: Int, startuserY: Int){
         startingPosition = Position(x: startuserX , y: startuserY )
     }
@@ -96,8 +91,6 @@ class BoardView: UIView {
         endingPosition = Position(x: enduserX , y: enduserY )
     }
     
-    
-    //Ζωγραφίζει ενα knight piece στο πρώτο τετράγωνο (Δεν συμβαίνει γιατί δεν αλλάζει η θέση) TODO bugfix
     func drawPiece(){
         let knightPiece = UIImage(named: "Knight")
         let ending = UIImage(named: "End")
@@ -111,7 +104,6 @@ class BoardView: UIView {
     }
     
     func drawBoard() {
-        //Το col ειναι για να κανει multiply τα τετραγωνα στις σωστες στηλες και το row για τις γραμμες
         for row in 0..<(N/2){
           for col in 0..<(N/2) {
               drawSquare(col: col * 2, row: row * 2, color: UIColor.white)
@@ -123,7 +115,6 @@ class BoardView: UIView {
         }
     }
     
-    //Φτιαχνει το τετράγωνο
     func drawSquare(col: Int, row: Int, color: UIColor){
         let path = UIBezierPath(rect: CGRect(x: originX + CGFloat(col) * cellSide, y: originY + CGFloat(row) * cellSide, width: cellSide, height: cellSide ))
         color.setFill()
@@ -131,7 +122,7 @@ class BoardView: UIView {
         
     }
     
-    //Οι κινήσεις που μπορεί να κάνει το άλογο
+    //Knight's allowed moves
     func getMoves(startingPosition: Position) -> Array<Position> {
         let knightMoves: [Position] = [
                 Position(x: startingPosition.x - 2, y: startingPosition.y - 1),
@@ -168,9 +159,9 @@ class BoardView: UIView {
 
     }
     
-    //Κατασκευάζει τα nodes
+    //create nodes
     func generateMoveGraphs(){
-        //BFS - Συνδεει τα nodes
+        //BFS - connect nodes
         func connectMovesGraph(nodes: [Position: Node] ){
             var leveledQueues = [Queue<Node>()]
             leveledQueues[0].enqueue(nodes[startingPosition!]!)
@@ -197,7 +188,7 @@ class BoardView: UIView {
             }
          }
         
-        //DFS v = trexon komvos
+        //DFS v = current node
         func recrFindPath( v: Node, depth: Int, cutoff: Int, dest: Node) -> [Node]?{
             if depth > cutoff{
                return nil
@@ -246,12 +237,13 @@ class BoardView: UIView {
                 }
             }
             resultString += "\n"
-        }
-         else{
-          print("No path found.")
-          resultString += "No path found.\n"
+        } else if startingPosition == endingPosition {
+            print("Starting position is the same as ending position.")
+            resultString += "Starting position is the same as ending position.\n"
+         } else {
+            print("No path found.")
+            resultString += "No path found.\n"
          }
-
     }
     
     func isPositionValid(position: Position) -> Bool {
