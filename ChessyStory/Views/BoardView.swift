@@ -7,6 +7,21 @@
 
 import UIKit
 
+class Coordinate{
+    let x: Int
+    let y: Int
+    
+    init(x xPos: Int, y yPos: Int) {
+        self.x = xPos
+        self.y = yPos
+    }
+    
+    func isSameCoordinate(with coordinate: Coordinate) -> Bool{
+        return self.x == coordinate.x && self.y == coordinate.y
+    }
+}
+
+
 class BoardView: UIView {
     var nodes: [Position: Node] = [:]
     
@@ -18,15 +33,15 @@ class BoardView: UIView {
     var cellSide: CGFloat = -10
     var startingPosition: Position? = nil
     var endingPosition: Position? = nil
-    var N: Int = 8
+    var boardSize: Int = 8
 
         
     //Initializer for nodes
     func myInit(){
-        for i: Int in 0...(N-1){
+        for i: Int in 0...(boardSize-1){
             
         
-            for j: Int in 0...(N-1){
+            for j: Int in 0...(boardSize-1){
                 let p = Position(x: i,y: j)
                 nodes[p] = Node(position: p)
             }
@@ -53,10 +68,13 @@ class BoardView: UIView {
     
     //draw squares
     override func draw(_ rect: CGRect) {
-        cellSide = bounds.width * ratio / 8
-        originX = bounds.width * (1 - ratio) / 2
-        originY = bounds.height * (1 - ratio) / 2
-        drawBoard()
+        cellSide = bounds.width * 1.0 / CGFloat(boardSize)
+        
+        for column in 0..<boardSize{
+            for row in 0..<boardSize{
+                drawSquare(at: Coordinate(x: column, y: row))
+            }
+        }
         drawPiece()
     }
     
@@ -103,9 +121,9 @@ class BoardView: UIView {
 
     }
     
-    func drawBoard() {
-        for row in 0..<(N/2){
-          for col in 0..<(N/2) {
+  /*  func drawBoard() {
+        for row in 0..<(boardSize/2){
+          for col in 0..<(boardSize/2) {
               drawSquare(col: col * 2, row: row * 2, color: UIColor.white)
               drawSquare(col: 1 + col * 2, row: row * 2, color: UIColor.black)
               drawSquare(col: col * 2, row: 1 + row * 2, color: UIColor.black)
@@ -113,14 +131,27 @@ class BoardView: UIView {
 
             }
         }
-    }
-    
-    func drawSquare(col: Int, row: Int, color: UIColor){
-        let path = UIBezierPath(rect: CGRect(x: originX + CGFloat(col) * cellSide, y: originY + CGFloat(row) * cellSide, width: cellSide, height: cellSide ))
-        color.setFill()
-        path.fill()
+    }*/
+    func drawSquare(at coordinate: Coordinate){
+        let xToDraw = CGFloat(coordinate.x) * cellSide
+        let yToDraw = CGFloat(coordinate.y) * cellSide
         
+        let box = UIBezierPath(rect: CGRect(x: xToDraw, y: yToDraw, width: cellSide, height: cellSide))
+        
+        let squareColor = getSquareColor(col: coordinate.x, row: coordinate.y)
+        squareColor.setFill()
+        box.fill()
     }
+    func getSquareColor(col: Int, row: Int) -> UIColor{
+        return (col + row) % 2 == 0 ? UIColor.white : UIColor.black
+    }
+
+//    func drawSquare(col: Int, row: Int, color: UIColor){
+//        let path = UIBezierPath(rect: CGRect(x: originX + CGFloat(col) * cellSide, y: originY + CGFloat(row) * cellSide, width: cellSide, height: cellSide ))
+//        color.setFill()
+//        path.fill()
+//
+//    }
     
     //Knight's allowed moves
     func getMoves(startingPosition: Position) -> Array<Position> {
@@ -147,7 +178,7 @@ class BoardView: UIView {
         return result
     }
         
-    @IBAction func calculate(_ sender: UIButton) {
+    @objc func calculate() {
         if (startingPosition != nil && endingPosition != nil){
             generateMoveGraphs()
         }
@@ -247,7 +278,7 @@ class BoardView: UIView {
     }
     
     func isPositionValid(position: Position) -> Bool {
-        if position.x >= 0 && position.y >= 0 && position.x < N && position.y < N {
+        if position.x >= 0 && position.y >= 0 && position.x < boardSize && position.y < boardSize {
             return true
         }
         return false
