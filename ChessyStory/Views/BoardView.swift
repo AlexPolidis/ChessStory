@@ -240,8 +240,8 @@ class BoardView: UIView {
             }
             resultString += "\n"
         } else if startingPosition == endingPosition {
-            print("Starting position is the same as ending position.")
-            resultString += "Starting position is the same as ending position.\n"
+            print("Starting position is the same as the ending position.")
+            resultString += "Starting position is the same as the ending position.\n"
          } else {
             print("No path found.")
             resultString += "No path found.\n"
