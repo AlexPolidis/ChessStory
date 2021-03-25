@@ -58,13 +58,7 @@ class BoardView: UIView {
         super.init(coder: aDecoder)
         myInit()
     }
-    
-    func changeBoardSize(){
         
-        
-        
-    }
-    
     //draw squares
     override func draw(_ rect: CGRect) {
         cellSide = bounds.width * 1.0 / CGFloat(boardSize)

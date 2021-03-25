@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        resultLabel.textAlignment = .center
         chessSize.text = "N:\(boardView.boardSize)"
         boardView.layer.borderWidth = 0.8
         boardView.layer.borderColor = UIColor.black.cgColor
@@ -45,7 +46,7 @@ class ViewController: UIViewController {
     }
     
     @objc func reset() {
-        if boardView.startingPosition == nil && boardView.endingPosition == nil {
+        if boardView.startingPosition == nil && boardView.endingPosition == nil && boardView.boardSize == 8 {
             let ac = UIAlertController(title: "Alert", message: "There's nothing to reset.", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: .default))
             present(ac, animated: true)
@@ -54,6 +55,8 @@ class ViewController: UIViewController {
             boardView.endingPosition = nil
             boardView.resultString = ""
             resultLabel.text = "Board cleared!"
+            boardView.boardSize = 8
+            chessSize.text = ("N:\(boardView.boardSize)")
             boardView.setNeedsDisplay()
             let ac = UIAlertController(title: "Alert", message: "Board has been reset.", preferredStyle: UIAlertController.Style.alert)
             ac.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default))
@@ -63,7 +66,7 @@ class ViewController: UIViewController {
     
     @IBAction func sliderValueChanged(_ sender: Any) {
         boardView.boardSize = Int(sizeSlider.value)
-        boardView.changeBoardSize()
+        boardView.setNeedsDisplay()
         chessSize.text = ("N:\(boardView.boardSize)")
     }
     

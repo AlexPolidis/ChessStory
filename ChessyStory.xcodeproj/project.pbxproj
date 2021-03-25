@@ -17,9 +17,7 @@
 		DE1B52FA25E92058009C9DB2 /* ChessyStoryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1B52F925E92058009C9DB2 /* ChessyStoryUITests.swift */; };
 		DE1B530B25E92083009C9DB2 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1B530A25E92083009C9DB2 /* BoardView.swift */; };
 		DE1D0B0F25EAF4E200629DB9 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D0B0E25EAF4E100629DB9 /* Queue.swift */; };
-		DE24AEB325ED0D52002FAB30 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE24AEB225ED0D52002FAB30 /* ResultView.swift */; };
 		DED886FF25EAAB040046F74C /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED886FE25EAAB030046F74C /* Node.swift */; };
-		DEF0C03125E95E5700599209 /* KnightPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF0C03025E95E5700599209 /* KnightPiece.swift */; };
 		DEF0C08225E97C9D00599209 /* UserPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF0C08125E97C9D00599209 /* UserPosition.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,9 +55,7 @@
 		DE1B52FB25E92058009C9DB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE1B530A25E92083009C9DB2 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		DE1D0B0E25EAF4E100629DB9 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
-		DE24AEB225ED0D52002FAB30 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		DED886FE25EAAB030046F74C /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
-		DEF0C03025E95E5700599209 /* KnightPiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightPiece.swift; sourceTree = "<group>"; };
 		DEF0C08125E97C9D00599209 /* UserPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPosition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,7 +141,6 @@
 				DE2245FC25ED5374000C3398 /* Storyboards */,
 				DE1B530A25E92083009C9DB2 /* BoardView.swift */,
 				DE1B52DB25E92050009C9DB2 /* ViewController.swift */,
-				DE24AEB225ED0D52002FAB30 /* ResultView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -164,7 +159,6 @@
 			children = (
 				DE1D0B0E25EAF4E100629DB9 /* Queue.swift */,
 				DED886FE25EAAB030046F74C /* Node.swift */,
-				DEF0C03025E95E5700599209 /* KnightPiece.swift */,
 				DEF0C08125E97C9D00599209 /* UserPosition.swift */,
 			);
 			path = Classes;
@@ -306,9 +300,7 @@
 				DE1D0B0F25EAF4E200629DB9 /* Queue.swift in Sources */,
 				DED886FF25EAAB040046F74C /* Node.swift in Sources */,
 				DE1B52D825E92050009C9DB2 /* AppDelegate.swift in Sources */,
-				DE24AEB325ED0D52002FAB30 /* ResultView.swift in Sources */,
 				DE1B52DA25E92050009C9DB2 /* SceneDelegate.swift in Sources */,
-				DEF0C03125E95E5700599209 /* KnightPiece.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
