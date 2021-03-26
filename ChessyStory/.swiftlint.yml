@@ -1,0 +1,89 @@
+# `VFGR` PROJECT parent swiftlint file.
+# The parent swiftlint file for the whole workspace.
+# Place here general rules for all TARGETS.
+opt_in_rules:
+- unavailable_function
+- anyobject_protocol
+- explicit_init
+line_length: 400
+force_cast: warning # implicitly
+force_try: warning
+identifier_name:
+    min_length: 1
+    validates_start_with_lowercase: false
+    allowed_symbols: ["_"]
+type_name:
+    min_length: 3
+    validates_start_with_lowercase: false
+    allowed_symbols: ["_"]
+file_length:
+    warning: 400
+    error: 2000
+cyclomatic_complexity:
+    warning: 10
+    error: 40
+function_body_length:
+    warning: 40
+    error: 200
+type_body_length:
+    warning: 200
+    error: 1000
+shorthand_operator: warning
+function_parameter_count:
+    warning: 5
+    error: 20
+nesting:
+    type_level: 2
+custom_rules:
+  uiwebview_deprecated: # rule identifier
+    included: ".*\\.swift" # regex that defines paths to include during linting. optional.
+    excluded: ".*Test\\.swift" # regex that defines paths to exclude during linting. optional
+    name: "UIWebView deprecated" # rule name. optional.
+    regex: "(UIWebView)" # matching pattern
+    capture_group: 0 # number of regex capture group to highlight the rule violation at. optional.
+    match_kinds: # SyntaxKinds to match. optional.
+        - comment
+        - identifier
+        - string
+    message: "UIWebView is deprecated, use WKWebView instead." # violation message. optional.
+    severity: error # violation severity. optional.
+  percentEncodedQuery_unsafe:
+      included: ".*\\.swift"
+      excluded: ".*Test\\.swift"
+      name: "URLComponents.percentEncodedQuery is unsafe"
+      regex: "(percentEncodedQuery)"
+      capture_group: 0
+      match_kinds:
+          - identifier
+          - string
+      message: "Do not use 'URLComponents.percentEncodedQuery'. Use VFCommon's 'safePercentEncodedQuery' instead"
+      severity: error
+  mock_naming: # `MockMyEntity`, not `MyEntityMock`
+    included: ".*Test.*" # Test Folders
+    name: "Mock Naming Convention"
+    regex: '(struct|class|enum)\s+(\w+[mM]ock|mock)'
+    capture_group: 0
+    message: "Mocks should have the same name as the mocked file with a `Mock` prefix."
+  vf_live: # VF_LIVE typo
+    included: ".*\\.swift"
+    excluded: ".*Test\\.swift"
+    name: "VF_LIVE Typo"
+    regex: "(?!\\bVF_LIVE\\b)(?i)VF_*LIVE" # i.e. VF_LIVE variations (case insensitive) except VF_LIVE itself.
+    capture_group: 0
+    message: ""
+    severity: error
+  no_objc_in_vfcommons:
+    included: ".*VFCommons.*\\.swift" # VFCommons doesn't have it's own .swiftlint.yml.
+    name: "No @objc in VFCommons"
+    regex: '@objc'
+    capture_group: 0
+    match_kinds:
+      - attribute.builtin
+    message: "Only Swift facing code in VFCommons please."
+    severity: error
+
+excluded:
+- VFGBilling
+- Pods
+- Config/Tealium/TealiumConfig.swift
+- Config/Constants/ConstantsConfig.swift

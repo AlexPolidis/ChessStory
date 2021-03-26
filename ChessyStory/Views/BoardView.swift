@@ -7,21 +7,6 @@
 
 import UIKit
 
-class Coordinate{
-    let x: Int
-    let y: Int
-    
-    init(x xPos: Int, y yPos: Int) {
-        self.x = xPos
-        self.y = yPos
-    }
-    
-    func isSameCoordinate(with coordinate: Coordinate) -> Bool{
-        return self.x == coordinate.x && self.y == coordinate.y
-    }
-}
-
-
 class BoardView: UIView {
     var nodes: [Position: Node] = [:]
     
@@ -38,10 +23,8 @@ class BoardView: UIView {
         
     //Initializer for nodes
     func myInit(){
-        for i: Int in 0...(boardSize-1){
-            
-        
-            for j: Int in 0...(boardSize-1){
+        for i: Int in 0...(boardSize-1) {
+            for j: Int in 0...(boardSize-1) {
                 let p = Position(x: i,y: j)
                 nodes[p] = Node(position: p)
             }
@@ -255,4 +238,18 @@ class BoardView: UIView {
         return false
     }
 
+}
+
+class Coordinate{
+    let x: Int
+    let y: Int
+    
+    init(x xPos: Int, y yPos: Int) {
+        self.x = xPos
+        self.y = yPos
+    }
+    
+    func isSameCoordinate(with coordinate: Coordinate) -> Bool{
+        return self.x == coordinate.x && self.y == coordinate.y
+    }
 }
