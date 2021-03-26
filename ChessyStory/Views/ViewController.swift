@@ -26,11 +26,14 @@ class ViewController: UIViewController {
         resultLabel.numberOfLines = 0
         
         chessSize.text = "N:\(boardView.boardSize)"
+        
         boardView.layer.borderWidth = 0.8
         boardView.layer.borderColor = UIColor.black.cgColor
+        
         navigationController?.navigationBar.barTintColor = UIColor.white
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(reset))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Calculate", style: .plain, target: self, action: #selector(calculate))
+        
         resultLabel.text = "Here it will show your results!"
         resultLabel.font = .systemFont(ofSize: 20)
         
