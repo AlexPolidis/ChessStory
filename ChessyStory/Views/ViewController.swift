@@ -23,6 +23,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         resultLabel.textAlignment = .center
+        resultLabel.numberOfLines = 0
+        
         chessSize.text = "N:\(boardView.boardSize)"
         boardView.layer.borderWidth = 0.8
         boardView.layer.borderColor = UIColor.black.cgColor
@@ -65,9 +67,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func sliderValueChanged(_ sender: Any) {
-        boardView.boardSize = Int(sizeSlider.value)
-        boardView.setNeedsDisplay()
-        chessSize.text = ("N:\(boardView.boardSize)")
+//        boardView.boardSize = Int(sizeSlider.value)
+//        boardView.setNeedsDisplay()
+        chessSize.text = ("N:\(Int(sizeSlider.value))")
     }
     
     
