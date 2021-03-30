@@ -9,6 +9,7 @@ import UIKit
 
 class BoardView: UIView {
     var nodes: [Position: Node] = [:]
+    var savedPosition: [Position: Node] = [:]
     
     var resultString = ""
         
