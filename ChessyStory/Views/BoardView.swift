@@ -200,8 +200,7 @@ class BoardView: UIView {
             {
                 path.reverse()
                 return path
-            }
-            else{
+            } else {
               return nil
             }
         }

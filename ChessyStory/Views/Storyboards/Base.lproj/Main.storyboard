@@ -74,10 +74,8 @@
                             <constraint firstItem="kvg-4z-07z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="HOH-2b-3cy"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kvg-4z-07z" secondAttribute="bottom" constant="113" id="KOA-75-YUW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aiB-0J-yrP" secondAttribute="trailing" constant="72" id="M2o-fO-cyj"/>
-                            <constraint firstItem="aiB-0J-yrP" firstAttribute="top" secondItem="UeW-Mp-HrZ" secondAttribute="bottom" constant="40.329999999999998" id="ObS-Z9-N3I"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UeW-Mp-HrZ" secondAttribute="trailing" constant="20" id="QVN-TW-Dpw"/>
                             <constraint firstItem="aiB-0J-yrP" firstAttribute="leading" secondItem="kvg-4z-07z" secondAttribute="trailing" constant="31" id="WKU-Yl-3mS"/>
-                            <constraint firstItem="UeW-Mp-HrZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="XCo-nK-8qC"/>
                             <constraint firstItem="kvg-4z-07z" firstAttribute="top" secondItem="UeW-Mp-HrZ" secondAttribute="bottom" constant="45.329999999999998" id="YRc-lb-4TL"/>
                             <constraint firstItem="hcV-fE-1wg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="ZbE-Ro-jzZ"/>
                             <constraint firstItem="aiB-0J-yrP" firstAttribute="top" secondItem="UeW-Mp-HrZ" secondAttribute="bottom" constant="40.329999999999998" id="bdQ-LG-KSa"/>
@@ -85,13 +83,10 @@
                             <constraint firstItem="H0n-Ur-mdx" firstAttribute="top" secondItem="aiB-0J-yrP" secondAttribute="bottom" constant="8" id="bnG-8Y-g47"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="aiB-0J-yrP" secondAttribute="bottom" constant="109" id="cVl-wB-QuG"/>
                             <constraint firstItem="aiB-0J-yrP" firstAttribute="leading" secondItem="kvg-4z-07z" secondAttribute="trailing" constant="31" id="jkB-Zj-Mwn"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UeW-Mp-HrZ" secondAttribute="trailing" constant="20" id="mZb-QQ-wXv"/>
                             <constraint firstItem="UeW-Mp-HrZ" firstAttribute="top" secondItem="hcV-fE-1wg" secondAttribute="bottom" constant="8" id="neJ-Ze-5zT"/>
                             <constraint firstItem="H0n-Ur-mdx" firstAttribute="baseline" secondItem="kvg-4z-07z" secondAttribute="baseline" constant="47" id="or7-eN-6wu"/>
-                            <constraint firstItem="H0n-Ur-mdx" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="-158" id="qYv-34-dr5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="H0n-Ur-mdx" secondAttribute="bottom" constant="66" id="t3L-S2-4BT"/>
                             <constraint firstItem="UeW-Mp-HrZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="uMj-2M-YzC"/>
-                            <constraint firstItem="UeW-Mp-HrZ" firstAttribute="top" secondItem="hcV-fE-1wg" secondAttribute="bottom" constant="8" id="wzE-g2-hMY"/>
                             <constraint firstItem="hcV-fE-1wg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="yPO-tA-ZO6"/>
                             <constraint firstItem="H0n-Ur-mdx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="174" id="zyq-K4-9G5"/>
                         </constraints>

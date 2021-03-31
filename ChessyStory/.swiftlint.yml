@@ -1,4 +1,4 @@
-# `VFGR` PROJECT parent swiftlint file.
+# `CheesyStory` PROJECT parent swiftlint file.
 # The parent swiftlint file for the whole workspace.
 # Place here general rules for all TARGETS.
 opt_in_rules:

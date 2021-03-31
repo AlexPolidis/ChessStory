@@ -21,19 +21,16 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Knight Problem"
         
         resultLabel.textAlignment = .center
         resultLabel.numberOfLines = 0
-        
         chessSize.text = "N:\(boardView.boardSize)"
-        
         boardView.layer.borderWidth = 0.8
         boardView.layer.borderColor = UIColor.black.cgColor
-        
         navigationController?.navigationBar.barTintColor = UIColor.white
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(reset))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Calculate", style: .plain, target: self, action: #selector(calculate))
-        
         resultLabel.text = "Here it will show your results!"
         resultLabel.font = .systemFont(ofSize: 20)
         
@@ -70,8 +67,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func sliderValueChanged(_ sender: Any) {
-//        boardView.boardSize = Int(sizeSlider.value)
-//        boardView.setNeedsDisplay()
+        boardView.boardSize = Int(sizeSlider.value)
+        boardView.setNeedsDisplay()
         chessSize.text = ("N:\(Int(sizeSlider.value))")
     }
     
