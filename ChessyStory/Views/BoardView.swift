@@ -49,7 +49,7 @@ class BoardView: UIView {
         
         for column in 0..<boardSize{
             for row in 0..<boardSize{
-                drawSquare(at: Coordinate(x: column, y: row))
+                drawSquare(at: Position(x: column, y: row))
             }
         }
         drawPiece()
@@ -98,7 +98,7 @@ class BoardView: UIView {
 
     }
     
-    func drawSquare(at coordinate: Coordinate){
+    func drawSquare(at coordinate: Position){
         let xToDraw = CGFloat(coordinate.x) * cellSide
         let yToDraw = CGFloat(coordinate.y) * cellSide
         
@@ -214,19 +214,15 @@ class BoardView: UIView {
         resultString = ""
         if let path = findPath(movesGraph: g){
             for (i,v) in path.enumerated(){
-                print("(\(v.position.x + 1),\(v.position.y + 1))", terminator: "")
                 resultString += ("(\(v.position.x + 1),\(v.position.y + 1))")
                 if (i != (path.count-1)){
-                    print(" -> ", terminator: "")
                     resultString += " -> "
                 }
             }
             resultString += "\n"
         } else if startingPosition == endingPosition {
-            print("Starting position is the same as the ending position.")
             resultString += "Starting position is the same as the ending position.\n"
          } else {
-            print("No path found.")
             resultString += "No path found.\n"
          }
     }
@@ -238,18 +234,4 @@ class BoardView: UIView {
         return false
     }
 
-}
-
-class Coordinate{
-    let x: Int
-    let y: Int
-    
-    init(x xPos: Int, y yPos: Int) {
-        self.x = xPos
-        self.y = yPos
-    }
-    
-    func isSameCoordinate(with coordinate: Coordinate) -> Bool{
-        return self.x == coordinate.x && self.y == coordinate.y
-    }
 }
