@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     
     @IBOutlet weak var sizeSlider: UISlider!
-    @IBOutlet weak var sizeButton: UIButton!
     @IBOutlet weak var chessSize: UILabel!
     
     override func viewDidLoad() {
@@ -26,6 +25,7 @@ class ViewController: UIViewController {
         resultLabel.textAlignment = .center
         resultLabel.numberOfLines = 0
         chessSize.text = "N:\(boardView.boardSize)"
+        sizeSlider.value = Float(Int(boardView.boardSize))
         boardView.layer.borderWidth = 0.8
         boardView.layer.borderColor = UIColor.black.cgColor
         navigationController?.navigationBar.barTintColor = UIColor.white
@@ -59,6 +59,7 @@ class ViewController: UIViewController {
             resultLabel.text = "Board cleared!"
             boardView.boardSize = 8
             chessSize.text = ("N:\(boardView.boardSize)")
+            sizeSlider.value = Float(Int(boardView.boardSize))
             boardView.setNeedsDisplay()
             let ac = UIAlertController(title: "Alert", message: "Board has been reset.", preferredStyle: UIAlertController.Style.alert)
             ac.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default))
@@ -67,8 +68,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func sliderValueChanged(_ sender: Any) {
-        boardView.boardSize = Int(sizeSlider.value)
-        boardView.setNeedsDisplay()
+//        boardView.boardSize = Int(sizeSlider.value)
+//        boardView.setNeedsDisplay()
         chessSize.text = ("N:\(Int(sizeSlider.value))")
     }
     
