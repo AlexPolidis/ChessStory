@@ -12,9 +12,7 @@ class ViewController: UIViewController {
     var knightMoves: [Position] = []
         
     @IBOutlet weak var boardView: BoardView!
-        
     @IBOutlet weak var resultLabel: UILabel!
-    
     @IBOutlet weak var sizeSlider: UISlider!
     @IBOutlet weak var chessSize: UILabel!
     
